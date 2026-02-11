@@ -1,0 +1,222 @@
+/* ===================================
+   RESET Y VARIABLES
+   =================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Colores corporativos */
+  --color-primary: #0f3d3e;     /* verde petróleo corporativo elegante */
+  --color-secondary: #1f2f46;   /* azul profundo profesional */
+  --color-accent: #1a6f73;      /* teal moderno más vivo */
+  
+  /* Gradientes */
+--gradient-primary: linear-gradient(
+  140deg,
+  #081f38 0%,
+  #0f3d3e 40%,
+  #1a6f73 75%,
+  #1f2f46 100%
+);
+
+
+  /* Overlay con transparencia */
+  --gradient-overlay: linear-gradient(
+    135deg,
+    rgba(7, 26, 50, 0.95) 0%,
+    rgba(15, 71, 82, 0.92) 45%,
+    rgba(18, 75, 87, 0.9) 70%,
+    rgba(17, 54, 65, 0.95) 100%
+  );
+
+  /* Hero más limpio y moderno */
+  --gradient-hero: linear-gradient(
+    to right,
+    #071a32,
+    #0f4752,
+    #124b57
+  );
+  
+  /* Grises */
+  --color-text-dark: #1a1a1a;
+  --color-text-light: #6b7280;
+  --color-bg-light: #f9fafb;
+  --color-bg-white: #ffffff;
+  --color-border: #e5e7eb;
+  
+  /* Tipografías */
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Poppins', sans-serif;
+  
+  /* Espaciado */
+  --container-max: 1200px;
+  --section-padding: 5rem 1.5rem;
+  --section-padding-mobile: 3rem 1.25rem;
+  
+  /* Sombras */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.2);
+  
+  /* Transiciones */
+  --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.2s ease;
+}
+
+/* ===================================
+   ESTILOS GLOBALES
+   =================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text-dark);
+  background-color: var(--color-bg-white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tipografías */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text-dark);
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+p {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--color-text-light);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-fast);
+}
+
+/* Contenedores */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section {
+  padding: var(--section-padding);
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: var(--section-padding-mobile);
+  }
+}
+
+/* ===================================
+   UTILIDADES
+   =================================== */
+
+.text-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-gradient {
+  background: var(--gradient-primary);
+}
+
+.bg-light {
+  background-color: var(--color-bg-light);
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  h1 { font-size: 2.25rem; }
+  h2 { font-size: 1.875rem; }
+  h3 { font-size: 1.5rem; }
+  p { font-size: 1rem; }
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary);
+}
