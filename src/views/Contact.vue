@@ -223,7 +223,7 @@
               <h3>¿Prefiere WhatsApp?</h3>
               <p>Escríbanos directamente y reciba atención inmediata</p>
               <a
-                href="https://wa.me/573168722357"
+                href="https://wa.me/573168722357?text=Hola%2C%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20seguridad%20laboral"
                 class="whatsapp-btn"
                 target="_blank"
                 rel="noopener"

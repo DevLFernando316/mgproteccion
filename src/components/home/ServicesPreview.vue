@@ -55,7 +55,7 @@ const services = [
   },
   {
     id: 2,
-    title: "2.	Transforme la seguridad laboral de su organización",
+    title: "Transforme la seguridad laboral de su organización",
     description:
       "Integramos inteligencia artificial y análisis predictivo para anticipar riesgos, fortalecer controles y optimizar la gestión del SG-SST.",
     image: "/images/servicios/2IA_análisis_predictivo.PNG",
@@ -69,7 +69,7 @@ const services = [
   },
   {
     id: 3,
-    title: "3.	Soluciones integrales en gestión de riesgos laborales",
+    title: "Soluciones integrales en gestión de riesgos laborales",
     description:
       "Garantice la seguridad de su equipo, cumpla con la normatividad vigente y optimice sus operaciones con servicios especializados en SST.",
     image: "/images/servicios/3SGSST.WEBP",
@@ -79,7 +79,7 @@ const services = [
   },
   {
     id: 4,
-    title: "4.	Optimice su seguridad eléctrica con cumplimiento normativo",
+    title: "Optimice su seguridad eléctrica con cumplimiento normativo",
     description:
       "Diseñamos controles y medidas técnicas alineadas con RETIE 2024 (Res. 40117), Resolución 5018 de 2019 y estándares internacionales como NFPA 70E.",
     image: "/images/servicios/4Seguridad_eléctrica .PNG",
@@ -91,7 +91,7 @@ const services = [
   },
   {
     id: 5,
-    title: "5.	Formación práctica y segura en riesgos críticos",
+    title: "Formación práctica y segura en riesgos críticos",
     description:
       "Capacitamos en riesgos críticos mediante simuladores portátiles que recrean entornos mecánicos y eléctricos sin exposición real, consolidando un entorno laboral seguro.",
     image: "/images/servicios/5Riesgo_crítico.PNG",
@@ -102,7 +102,7 @@ const services = [
   },
   {
     id: 6,
-    title: "6.	Gamificación estratégica para una formación de alto impacto",
+    title: "Gamificación estratégica para una formación de alto impacto",
     description:
       "Transformamos la capacitación tradicional en experiencias dinámicas que incrementan la retención del conocimiento y modifican conductas.",
     image: "/images/servicios/6Gamificación.JPG",

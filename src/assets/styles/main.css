@@ -220,3 +220,61 @@ a {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-secondary);
 }
+
+
+/* Estilos para contenido de WordPress */
+.content-body img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 2rem 0;
+}
+
+.content-body a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.content-body a:hover {
+  color: var(--color-secondary);
+}
+
+.content-body code {
+  background: var(--color-bg-light);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+.content-body pre {
+  background: #2d3748;
+  color: #f7fafc;
+  padding: 1.5rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 2rem 0;
+}
+
+.content-body pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.content-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+}
+
+.content-body table th,
+.content-body table td {
+  padding: 0.75rem;
+  border: 1px solid var(--color-border);
+  text-align: left;
+}
+
+.content-body table th {
+  background: var(--color-bg-light);
+  font-weight: 600;
+}

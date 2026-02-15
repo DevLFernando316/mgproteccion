@@ -141,28 +141,28 @@ let autoplayInterval = null;
 const slides = [
   {
     title:
-      'Proteja su empresa con <span class="text-highlight">soluciones integrales</span> en gestión de riesgos laborales',
+      'Proteja a su equipo y <span class="text-highlight">garantice el cumplimiento normativo</span>',
     description:
-      "Garantice la seguridad de su equipo, cumpla con la normatividad vigente y optimice sus operaciones con servicios especializados en SST.",
-    stats: ["Equipo experto", "Cumplimiento normativo", "Respuesta rápida"],
-  },
-  {
-    title:
-      'Transforme la <span class="text-highlight">seguridad laboral</span> de su organización',
-    description:
-      "Implementamos tecnología con IA, simuladores didácticos y metodologías innovadoras para reducir incidentes hasta un 85%.",
+      "Asesoría especializada en seguridad laboral con tecnología de vanguardia y cumplimiento garantizado.",
     stats: [
-      "Tecnología con IA",
-      "Reducción de incidentes 85%",
-      "Capacitación efectiva",
+      "Expertos certificados",
+      "Cumplimiento 100%",
+      "Resultados medibles",
     ],
   },
   {
     title:
-      'Cumpla con <span class="text-highlight">RETIE, ISO 45001</span> y toda la normativa vigente',
+      '<span class="text-highlight">Reduzca incidentes hasta un 85%</span> con tecnología IA',
     description:
-      "Evite sanciones y multas. Lo acompañamos en el cumplimiento de Decreto 1072, Resolución 0312, RETIE 2024 y estándares de SST.",
-    stats: ["Cumplimiento 100%", "Sin multas", "Auditorías especializadas"],
+      "Transforme la seguridad de su empresa con simuladores, análisis predictivo y capacitación innovadora.",
+    stats: ["Tecnología IA avanzada", "Menos accidentes", "Formación práctica"],
+  },
+  {
+    title:
+      'Evite multas y sanciones <span class="text-highlight">¡Nosotros lo acompañamos!</span>',
+    description:
+      "Cumplimiento de RETIE 2024, Decreto 1072, ISO 45001 y toda la normativa vigente en SST.",
+    stats: ["Sin sanciones", "Auditorías expertas", "Asesoría permanente"],
   },
 ];
 
@@ -223,11 +223,9 @@ onUnmounted(() => {
 <style scoped>
 .hero {
   position: relative;
-  height: calc(100vh - 65px);
+  height: calc(100dvh);
   min-height: 500px;
-  max-height: 850px;
   overflow: hidden;
-  margin-top: 65px;
 }
 
 .carousel {
@@ -295,60 +293,91 @@ onUnmounted(() => {
 
 .hero-text h1 {
   color: white;
-  margin-bottom: 1.25rem;
-  line-height: 1.2;
-  font-size: clamp(1.875rem, 4.5vw, 3rem);
-  font-weight: 800;
-  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  margin-bottom: 1.5rem;
+  line-height: 1.15;
+  font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+  font-weight: 900;
+  text-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.5),
+    0 4px 20px rgba(0, 0, 0, 0.3);
+  letter-spacing: -0.02em;
 }
 
 .text-highlight {
   color: #5dd4b4;
-  font-weight: 800;
+  font-weight: 900;
+  text-shadow:
+    0 2px 15px rgba(93, 212, 180, 0.6),
+    0 4px 25px rgba(93, 212, 180, 0.4);
 }
 
 .hero-description {
-  font-size: clamp(0.9375rem, 1.8vw, 1.0625rem);
-  line-height: 1.65;
-  margin-bottom: 2rem;
-  color: rgba(255, 255, 255, 0.92);
-  max-width: 700px;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  font-size: clamp(1.125rem, 2.2vw, 1.375rem);
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+  color: rgba(255, 255, 255, 0.95);
+  max-width: 750px;
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.5),
+    0 1px 3px rgba(0, 0, 0, 0.8);
+  font-weight: 500;
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
 }
 
-/* Stats compactos */
+/* Stats mejorados */
 .hero-stats {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  gap: 2rem;
+  padding-top: 2rem;
+  border-top: 2px solid rgba(93, 212, 180, 0.3);
 }
 
 .stat {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.75rem;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  padding: 0.75rem 1.25rem;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .stat svg {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   color: #5dd4b4;
   flex-shrink: 0;
+  filter: drop-shadow(0 2px 4px rgba(93, 212, 180, 0.5));
 }
 
 .stat span {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Overlay más oscuro para mejor contraste */
+.slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.45) 0%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+  z-index: 1;
 }
 
 /* Controles del carrusel */
@@ -541,24 +570,27 @@ onUnmounted(() => {
   }
 
   .hero-text h1 {
-    font-size: 1.875rem;
-    margin-bottom: 1rem;
+    font-size: 2rem;
+    margin-bottom: 1.25rem;
   }
 
   .hero-description {
-    font-size: 0.9375rem;
-    margin-bottom: 1.75rem;
-  }
-
-  .hero-actions {
-    margin-bottom: 1.75rem;
+    font-size: 1.0625rem;
+    margin-bottom: 2rem;
   }
 
   .hero-stats {
-    gap: 1.25rem;
-    padding-top: 1.25rem;
+    gap: 1rem;
+    padding-top: 1.5rem;
   }
 
+  .stat {
+    padding: 0.625rem 1rem;
+  }
+
+  .stat span {
+    font-size: 0.875rem;
+  }
   .carousel-control {
     width: 42px;
     height: 42px;
@@ -583,21 +615,21 @@ onUnmounted(() => {
   }
 
   .hero-text h1 {
-    font-size: 1.625rem;
+    font-size: 1.75rem;
+    line-height: 1.2;
   }
 
   .hero-description {
-    font-size: 0.875rem;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-    gap: 0.875rem;
+    font-size: 0.9375rem;
   }
 
   .hero-stats {
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.75rem;
+  }
+
+  .stat {
+    justify-content: center;
   }
 
   .carousel-control {

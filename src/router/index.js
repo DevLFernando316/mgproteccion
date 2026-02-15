@@ -3,6 +3,8 @@ import Home from "../views/Home.vue";
 import About from "../views/About.vue";
 import Services from "../views/Services.vue";
 import WhyUs from "../views/WhyUs.vue";
+import Blog from "../views/Blog.vue";
+import BlogPost from "../views/BlogPost.vue";
 import Contact from "../views/Contact.vue";
 
 const routes = [
@@ -29,6 +31,16 @@ const routes = [
     name: "WhyUs",
     component: WhyUs,
     meta: { title: "Por Qué Elegirnos - MG Protección Laboral" },
+  },
+  {
+    path: "/blog",
+    name: "Blog",
+    component: Blog,
+  },
+  {
+    path: "/blog/:slug",
+    name: "BlogPost",
+    component: BlogPost,
   },
   {
     path: "/contacto",
