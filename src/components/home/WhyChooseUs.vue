@@ -234,11 +234,20 @@ const features = [
 </script>
 
 <style scoped>
+.section {
+  overflow: hidden; /* CRÍTICO */
+}
+
 .why-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 5rem;
   align-items: center;
+  max-width: 100%; /* IMPORTANTE */
+}
+
+.why-text {
+  max-width: 100%; /* IMPORTANTE */
 }
 
 .features {
@@ -246,12 +255,14 @@ const features = [
   flex-direction: column;
   gap: 2rem;
   margin-bottom: 2.5rem;
+  max-width: 100%; /* IMPORTANTE */
 }
 
 .feature {
   display: flex;
   align-items: flex-start;
   gap: 1.25rem;
+  max-width: 100%; /* IMPORTANTE */
 }
 
 .feature-icon {
@@ -271,6 +282,12 @@ const features = [
   height: 28px;
 }
 
+.feature-content {
+  flex: 1;
+  max-width: 100%; /* IMPORTANTE */
+  overflow: hidden; /* IMPORTANTE */
+}
+
 .feature-content h4 {
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
@@ -284,12 +301,18 @@ const features = [
 }
 
 /* Visual Card */
+.why-visual {
+  max-width: 100%; /* IMPORTANTE */
+  overflow: hidden; /* IMPORTANTE */
+}
+
 .visual-card {
   background: white;
   border-radius: 16px;
   box-shadow: var(--shadow-lg);
   overflow: hidden;
   border: 1px solid var(--color-border);
+  max-width: 100%; /* IMPORTANTE */
 }
 
 .card-header {
@@ -321,12 +344,16 @@ const features = [
 
 .card-content {
   padding: 2rem;
+  max-width: 100%; /* IMPORTANTE */
+  overflow: hidden; /* IMPORTANTE */
 }
 
 .card-content svg {
   width: 100%;
+  max-width: 100%; /* IMPORTANTE */
   height: auto;
   color: var(--color-text-dark);
+  display: block; /* IMPORTANTE */
 }
 
 .bar-animated {
@@ -339,14 +366,58 @@ const features = [
   }
 }
 
+/* Responsive */
 @media (max-width: 968px) {
   .why-content {
     grid-template-columns: 1fr;
     gap: 3rem;
+    max-width: 100%;
+    overflow: hidden;
   }
 
   .visual-card {
     order: -1;
+    max-width: 100%;
+  }
+
+  .card-content {
+    padding: 1.5rem;
+  }
+
+  .features {
+    gap: 1.75rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .why-content {
+    gap: 2rem;
+  }
+
+  .feature {
+    gap: 1rem;
+  }
+
+  .feature-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .feature-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .feature-content h4 {
+    font-size: 1.125rem;
+  }
+
+  .feature-content p {
+    font-size: 0.9375rem;
+  }
+
+  .card-content {
+    padding: 1rem;
   }
 }
 </style>

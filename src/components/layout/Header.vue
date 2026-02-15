@@ -156,7 +156,7 @@ onUnmounted(() => {
 }
 
 .logo:hover .logo-image {
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+  filter: brightness(0) invert(1);
 }
 
 /* Menu */
