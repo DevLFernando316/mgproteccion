@@ -251,15 +251,15 @@ onUnmounted(() => {
 
 /* Backgrounds para cada slide */
 .slide-0 {
-  background-image: url("/images/background1.jpg");
+  background-image: url("/images/carousel/background1.jpg");
 }
 
 .slide-1 {
-  background-image: url("/images/background2.jpg");
+  background-image: url("/images/carousel/background2.jpg");
 }
 
 .slide-2 {
-  background-image: url("/images/background3.jpg");
+  background-image: url("/images/carousel/background3.jpg");
 }
 
 .slide-overlay {
@@ -270,8 +270,8 @@ onUnmounted(() => {
   height: 100%;
   background: linear-gradient(
     135deg,
-    rgba(0, 0, 0, 0.5) 0%,
-    rgba(0, 0, 0, 0.3) 100%
+    rgba(0, 0, 0, 0.25) 0%,
+    rgba(0, 0, 0, 0.2) 100%
   );
   z-index: 1;
 }

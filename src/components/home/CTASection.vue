@@ -1,6 +1,8 @@
 <template>
   <section class="cta-section">
-    <div class="cta-background"></div>
+    <div class="cta-background">
+      <img src="/imagen_cta.png" alt="CTA Background" class="cta-bg-image" />
+    </div>
     <div class="container">
       <div class="cta-content">
         <div class="cta-text">
@@ -84,9 +86,9 @@ import Button from "../common/Button.vue";
 <style scoped>
 .cta-section {
   position: relative;
-  padding: 5rem 1.5rem;
-  background: var(--gradient-primary);
+  padding: 5rem 2rem;
   overflow: hidden;
+  background: #6b7280;
 }
 
 .cta-background {
@@ -95,11 +97,15 @@ import Button from "../common/Button.vue";
   left: 0;
   right: 0;
   bottom: 0;
-  opacity: 0.1;
-  background-image:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-    linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-  background-size: 50px 50px;
+  overflow: hidden;
+}
+
+.cta-bg-image {
+  width: 100%;
+  height: 100%;
+
+  object-position: center;
+  opacity: 0.9;
 }
 
 .cta-content {
@@ -195,6 +201,12 @@ import Button from "../common/Button.vue";
   .whatsapp-btn {
     width: 100%;
     justify-content: center;
+  }
+
+  .cta-background {
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5; /* Reducir opacidad en móvil para mejor legibilidad */
   }
 }
 </style>

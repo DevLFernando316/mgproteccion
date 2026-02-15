@@ -4,37 +4,18 @@
       <div class="container">
         <div class="footer-grid">
           <!-- Columna 1: Empresa -->
-          <div class="footer-col">
+          <div class="footer-column">
             <div class="footer-logo">
-              <div class="logo-icon">
-                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r="45"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="3"
-                  />
-                  <path
-                    d="M 30 60 Q 50 30, 70 60"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="4"
-                    stroke-linecap="round"
-                  />
-                  <circle cx="50" cy="50" r="8" fill="currentColor" />
-                </svg>
-              </div>
-              <div class="logo-text">
-                <span class="logo-main">MG PROTECCIÓN</span>
-                <span class="logo-sub">LABORAL</span>
-              </div>
+              <img
+                src="/Logo_MG.png"
+                alt="MG Protección Laboral"
+                class="footer-logo-image"
+              />
             </div>
             <p class="footer-description">
-              Soluciones integrales en gestión de riesgos laborales. Protegemos
-              a su equipo, garantizamos el cumplimiento normativo y optimizamos
-              sus operaciones.
+              Soluciones integrales en gestión de riesgos laborales. Proteja a
+              su equipo y garantice el cumplimiento normativo con nuestros
+              servicios especializados.
             </p>
           </div>
 
@@ -58,11 +39,36 @@
           <div class="footer-col">
             <h4>Servicios Principales</h4>
             <ul>
-              <li>Sistemas de Gestión SST</li>
-              <li>Gestión de Riesgo Mecánico</li>
-              <li>Gestión de Riesgo Eléctrico</li>
-              <li>Control de Energías Peligrosas</li>
-              <li>Tareas de Alto Riesgo (TAR)</li>
+              <li>
+                <router-link to="/servicios"
+                  >Sistemas de Gestión SST</router-link
+                >
+              </li>
+              <li>
+                <router-link to="/servicios"
+                  >Gestión de Riesgo Mecánico</router-link
+                >
+              </li>
+              <li>
+                <router-link to="/servicios"
+                  >Gestión de Riesgo Eléctrico</router-link
+                >
+              </li>
+              <li>
+                <router-link to="/servicios"
+                  >Control de Energías Peligrosas</router-link
+                >
+              </li>
+              <li>
+                <router-link to="/servicios"
+                  >Tareas de Alto Riesgo (TAR)</router-link
+                >
+              </li>
+              <li>
+                <router-link to="/servicios"
+                  >Gamificación para Gestión de Riesgos Laborales</router-link
+                >
+              </li>
             </ul>
           </div>
 
@@ -194,36 +200,20 @@ const currentYear = computed(() => new Date().getFullYear());
 
 /* Logo Footer */
 .footer-logo {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 
-.footer-logo .logo-icon {
-  width: 50px;
-  height: 50px;
-  color: white;
+.footer-logo-image {
+  height: 70px;
+  width: 105px;
+  filter: brightness(0) invert(1);
+  opacity: 0.95;
+  transition: all 0.3s ease;
 }
 
-.footer-logo .logo-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.1;
-}
-
-.footer-logo .logo-main {
-  font-size: 1.25rem;
-  font-weight: 800;
-  color: white;
-  font-family: var(--font-heading);
-}
-
-.footer-logo .logo-sub {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
-  letter-spacing: 0.5px;
+.footer-logo-image:hover {
+  opacity: 1;
+  transform: scale(1.02);
 }
 
 .footer-description {
@@ -387,6 +377,18 @@ const currentYear = computed(() => new Date().getFullYear());
   .whatsapp-float svg {
     width: 28px;
     height: 28px;
+  }
+
+  .footer-logo-image {
+    height: 60px;
+    width: 90px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-logo-image {
+    height: 50px;
+    width: 80px;
   }
 }
 </style>

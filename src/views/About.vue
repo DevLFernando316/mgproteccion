@@ -27,17 +27,15 @@
               ingeniería en gestión de riesgos laborales.
             </p>
             <p>
-              Contamos con un equipo de profesionales con amplia experiencia en
-              gestión de riesgos laborales. Nuestra metodología está basada en
-              un enfoque integral, innovador y adaptado a las necesidades
-              específicas de cada cliente, garantizando así un crecimiento
-              sostenido y una gestión responsable de los riesgos.
+              Contamos con un equipo de profesionales calificados, con amplia
+              experiencia en el diseño e implementación de soluciones efectivas
+              para la prevención y control de riesgos laborales.
             </p>
             <p>
-              Nos especializamos en transformar la forma en que las
-              organizaciones enfrentan los desafíos de seguridad, brindando
-              soluciones que no solo cumplen con la normativa, sino que generan
-              valor real para nuestros clientes.
+              Nuestra metodología se basa en un enfoque integral, innovador y
+              adaptado a las necesidades específicas de cada cliente,
+              garantizando una gestión responsable de los riesgos y un
+              crecimiento sostenible de las organizaciones.
             </p>
           </div>
           <div class="content-visual">
@@ -229,18 +227,87 @@
             <p>
               Ser reconocidos como líderes en la gestión de riesgos laborales,
               brindando soluciones innovadoras y sostenibles que se alineen con
-              las necesidades específicas de las organizaciones.
+              las necesidades específicas de las organizaciones, además de
+              transformar la forma en que enfrentan los desafíos y
+              oportunidades.
             </p>
             <p>
-              Transformar la forma en que enfrentan los desafíos y
-              oportunidades, con un compromiso constante con la calidad y la
-              innovación en los servicios ofrecidos.
+              Este liderazgo se consolidará mediante un compromiso constante con
+              la excelencia y la innovación en cada servicio ofrecido. Nuestra
+              meta será redefinir la cultura preventiva, garantizando estándares
+              de alta calidad que aseguren la protección del talento humano y el
+              éxito estratégico de nuestros aliados.
             </p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Nuestro Equipo -->
+    <section class="team-section">
+      <div class="container">
+        <SectionTitle label="Nuestro Equipo" center>
+          Profesionales con experiencia y pasión por la seguridad laboral
+        </SectionTitle>
+
+        <div class="team-highlight">
+          <div class="team-member-main">
+            <div class="member-image">
+              <div class="member-avatar">
+                <span>EP</span>
+              </div>
+            </div>
+            <div class="member-info">
+              <h3>Edward Pérez Cáceres</h3>
+              <p class="member-role">
+                Ingeniero Mecatrónico | Director General
+              </p>
+              <p class="member-description">
+                Profesional con sólida formación en ingeniería mecatrónica y
+                amplia experiencia en la implementación de sistemas de gestión
+                de seguridad industrial. Especialista en control de energías
+                peligrosas, trabajos de alto riesgo y tecnologías aplicadas a la
+                SST. Su enfoque combina conocimiento técnico avanzado con una
+                visión estratégica orientada a resultados medibles y
+                sostenibles.
+              </p>
+              <div class="member-contact">
+                <a href="tel:+573168722357" class="contact-btn">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                    />
+                  </svg>
+                  316 872 2357
+                </a>
+                <a
+                  href="mailto:mgproteccionlaboralsas@gmail.com"
+                  class="contact-btn"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <rect width="20" height="16" x="2" y="4" rx="2" />
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                  </svg>
+                  Email
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Valores -->
     <section class="section">
       <div class="container">
@@ -289,9 +356,9 @@ const values = [
   },
   {
     id: 3,
-    title: "Profesionalismo",
+    title: "Mejora continua",
     description:
-      "Equipo altamente capacitado con experiencia comprobada en gestión de riesgos.",
+      "Optimizamos permanente de nuestros procesos, metodologías y servicios.",
     icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
       <circle cx="12" cy="7" r="4"></circle>
@@ -449,6 +516,115 @@ const values = [
   margin-bottom: 0;
 }
 
+/* Sección de Equipo */
+.team-section {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.team-highlight {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.team-member-main {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 3rem;
+  background: white;
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.team-member-main:hover {
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+  transform: translateY(-5px);
+}
+
+/* Avatar */
+.member-image {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.member-avatar {
+  width: 160px;
+  height: 160px;
+  background: linear-gradient(135deg, #204d32 0%, #0d545f 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: white;
+  box-shadow: 0 8px 25px rgba(32, 77, 50, 0.3);
+  border: 5px solid white;
+}
+
+/* Información del miembro */
+.member-info h3 {
+  font-size: 1.875rem;
+  font-weight: 800;
+  color: var(--color-text-dark);
+  margin-bottom: 0.5rem;
+  font-family: var(--font-heading);
+}
+
+.member-role {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #204d32;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.member-description {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-text-light);
+  margin-bottom: 2rem;
+  text-align: justify;
+}
+
+/* Botones de contacto */
+.member-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: white;
+  color: #204d32;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  border-radius: 50px;
+  border: 2px solid #204d32;
+  transition: all 0.3s ease;
+}
+
+.contact-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.contact-btn:hover {
+  background: #204d32;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(32, 77, 50, 0.2);
+}
+
 /* Values */
 .values-grid {
   display: grid;
@@ -511,6 +687,65 @@ const values = [
 
   .mission-vision-grid {
     grid-template-columns: 1fr;
+  }
+  .team-member-main {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .member-avatar {
+    width: 140px;
+    height: 140px;
+    font-size: 3rem;
+  }
+
+  .member-info h3 {
+    font-size: 1.5rem;
+  }
+
+  .member-role {
+    font-size: 1rem;
+    justify-content: center;
+  }
+
+  .member-description {
+    text-align: center;
+    font-size: 0.9375rem;
+  }
+
+  .member-contact {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-section {
+    padding: 3rem 0;
+  }
+
+  .team-member-main {
+    padding: 1.5rem;
+  }
+
+  .member-avatar {
+    width: 120px;
+    height: 120px;
+    font-size: 2.5rem;
+  }
+
+  .member-info h3 {
+    font-size: 1.375rem;
+  }
+
+  .member-contact {
+    flex-direction: column;
+  }
+
+  .contact-btn {
+    width: 100%;
+    justify-content: center;
   }
 }
 </style>

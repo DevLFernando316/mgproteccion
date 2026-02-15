@@ -3,31 +3,13 @@
     <div class="container">
       <nav class="nav">
         <!-- Logo -->
+        <!-- Logo -->
         <router-link to="/" class="logo">
-          <div class="logo-icon">
-            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-              <circle
-                cx="50"
-                cy="50"
-                r="45"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="3"
-              />
-              <path
-                d="M 30 60 Q 50 30, 70 60"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="4"
-                stroke-linecap="round"
-              />
-              <circle cx="50" cy="50" r="8" fill="currentColor" />
-            </svg>
-          </div>
-          <div class="logo-text">
-            <span class="logo-main">MG PROTECCIÓN</span>
-            <span class="logo-sub">LABORAL</span>
-          </div>
+          <img
+            src="/Logo_MG.png"
+            alt="MG Protección Laboral"
+            class="logo-image"
+          />
         </router-link>
 
         <!-- Menu Desktop -->
@@ -109,7 +91,7 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: linear-gradient(135deg, #204d32 0%, #0d545f 50%, #2d3e54 100%);
+  background: linear-gradient(135deg, #0f3d3e 0%, #0d545f 50%, #2d3e54 100%);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   transition: all 0.3s ease;
@@ -119,7 +101,7 @@ onUnmounted(() => {
 .header-scrolled {
   background: linear-gradient(
     135deg,
-    rgba(32, 77, 50, 0.85) 0%,
+    rgba(15, 61, 62, 0.85) 0%,
     rgba(13, 84, 95, 0.85) 50%,
     rgba(45, 62, 84, 0.85) 100%
   );
@@ -138,43 +120,23 @@ onUnmounted(() => {
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
-  font-weight: 700;
   transition: all 0.3s ease;
 }
 
 .logo:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
   opacity: 0.9;
 }
 
-.logo-icon {
-  width: 40px;
-  height: 40px;
-  color: white;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+.logo-image {
+  height: 70px;
+  width: 105px;
+  filter: brightness(0) invert(1);
+  transition: all 0.3s ease;
 }
 
-.logo-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.1;
-}
-
-.logo-main {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: white;
-  font-family: var(--font-heading);
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-  letter-spacing: 0.3px;
-}
-
-.logo-sub {
-  font-size: 0.65rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
-  letter-spacing: 0.8px;
+.logo:hover .logo-image {
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
 }
 
 /* Menu */
@@ -235,7 +197,7 @@ onUnmounted(() => {
 
 .nav-cta {
   background: white !important;
-  color: #204d32 !important;
+  color: #0f3d3e !important;
   padding: 0.55rem 1.5rem !important;
   border-radius: 50px !important;
   font-weight: 600 !important;
@@ -254,12 +216,12 @@ onUnmounted(() => {
   transform: translateY(-2px) !important;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2) !important;
   background: rgba(255, 255, 255, 0.95) !important;
-  color: #204d32 !important;
+  color: #0f3d3e !important;
 }
 
 .nav-cta.router-link-active {
   background: white !important;
-  color: #204d32 !important;
+  color: #0f3d3e !important;
 }
 
 /* Hamburger */
@@ -306,7 +268,7 @@ onUnmounted(() => {
     right: -100%;
     width: 300px;
     height: 100vh;
-    background: linear-gradient(180deg, #204d32 0%, #0d545f 50%, #2d3e54 100%);
+    background: linear-gradient(180deg, #0f3d3e 0%, #0d545f 50%, #2d3e54 100%);
     flex-direction: column;
     justify-content: center;
     gap: 0;
@@ -383,6 +345,20 @@ onUnmounted(() => {
 
   .nav-menu {
     width: 280px;
+  }
+}
+
+@media (max-width: 968px) {
+  .logo-image {
+    height: 60px;
+    width: 90px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-image {
+    height: 50px;
+    width: 80px;
   }
 }
 </style>

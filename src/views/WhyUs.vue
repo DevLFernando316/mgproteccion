@@ -368,35 +368,36 @@ const differentiators = [
     title: "Enfoque Personalizado",
     description:
       "Cada cliente es único. Diseñamos soluciones adaptadas a sus necesidades específicas, no plantillas genéricas.",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <circle cx="12" cy="12" r="10"></circle>
-      <path d="M12 16v-4"></path>
-      <path d="M12 8h.01"></path>
-    </svg>`,
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="11" cy="11" r="8"/>
+  <path d="m21 21-4.35-4.35"/>
+  <path d="M11 8v6"/>
+  <path d="M8 11h6"/>
+</svg>`,
     points: [
       "Diagnóstico inicial sin costo",
       "Planes ajustados a su presupuesto",
       "Acompañamiento permanente",
     ],
   },
+  // {
+  //   id: 3,
+  //   title: "Tecnología de Vanguardia",
+  //   description:
+  //     "Incorporamos IA, simuladores y herramientas digitales para maximizar el impacto de nuestros servicios.",
+  //   icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+  //     <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+  //     <line x1="8" y1="21" x2="16" y2="21"></line>
+  //     <line x1="12" y1="17" x2="12" y2="21"></line>
+  //   </svg>`,
+  //   points: [
+  //     "Analítica predictiva con IA",
+  //     "Simuladores portátiles didácticos",
+  //     "Plataformas de seguimiento digital",
+  //   ],
+  // },
   {
     id: 3,
-    title: "Tecnología de Vanguardia",
-    description:
-      "Incorporamos IA, simuladores y herramientas digitales para maximizar el impacto de nuestros servicios.",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-      <line x1="8" y1="21" x2="16" y2="21"></line>
-      <line x1="12" y1="17" x2="12" y2="21"></line>
-    </svg>`,
-    points: [
-      "Analítica predictiva con IA",
-      "Simuladores portátiles didácticos",
-      "Plataformas de seguimiento digital",
-    ],
-  },
-  {
-    id: 4,
     title: "Resultados Medibles",
     description:
       "No solo cumplimos normas, generamos valor real: reducción de incidentes, optimización de costos y mejora continua.",
@@ -489,11 +490,9 @@ const guarantees = [
     title: "Soporte Permanente",
     description:
       "Asistencia técnica continua durante y después de la implementación de nuestros servicios.",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <circle cx="12" cy="12" r="10"></circle>
-      <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-      <line x1="12" y1="17" x2="12.01" y2="17"></line>
-    </svg>`,
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Za9 9 0 0 1 18 0m0 5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z"/>
+</svg>`,
   },
   {
     id: 3,
@@ -510,12 +509,11 @@ const guarantees = [
     title: "Satisfacción Garantizada",
     description:
       "Trabajamos hasta que esté completamente satisfecho con los resultados obtenidos.",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <circle cx="12" cy="12" r="10"></circle>
-      <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-      <line x1="9" y1="9" x2="9.01" y2="9"></line>
-      <line x1="15" y1="9" x2="15.01" y2="9"></line>
-    </svg>`,
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="8" r="6"/>
+  <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+  <path d="m9 12 2 2 4-4"/>
+</svg>`,
   },
 ];
 
@@ -523,10 +521,12 @@ const sectors = [
   {
     id: 1,
     name: "Manufactura",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <circle cx="12" cy="12" r="3"></circle>
-      <path d="M12 1v6m0 6v6"></path>
-    </svg>`,
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/>
+  <path d="M17 18h1"/>
+  <path d="M12 18h1"/>
+  <path d="M7 18h1"/>
+</svg>`,
   },
   {
     id: 2,
@@ -538,26 +538,29 @@ const sectors = [
   {
     id: 3,
     name: "Minería",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-    </svg>`,
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v2z"/>
+  <path d="M10 10V5a2 2 0 1 1 4 0v5"/>
+  <path d="M4 15v-3a6 6 0 0 1 6-6h0"/>
+  <path d="M14 6h0a6 6 0 0 1 6 6v3"/>
+</svg>`,
   },
   {
     id: 4,
     name: "Petróleo y Gas",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M12 2v20M2 12h20"></path>
-    </svg>`,
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+</svg>`,
   },
+  // {
+  //   id: 5,
+  //   name: "Alimentos",
+  //   icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+  //     <path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+  //   </svg>`,
+  // },
   {
     id: 5,
-    name: "Alimentos",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
-    </svg>`,
-  },
-  {
-    id: 6,
     name: "Logística",
     icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <rect x="1" y="3" width="15" height="13"></rect>
@@ -567,20 +570,20 @@ const sectors = [
     </svg>`,
   },
   {
-    id: 7,
+    id: 6,
     name: "Energía",
     icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
     </svg>`,
   },
-  {
-    id: 8,
-    name: "Servicios",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-      <polyline points="9 22 9 12 15 12 15 22"></polyline>
-    </svg>`,
-  },
+  // {
+  //   id: 8,
+  //   name: "Servicios",
+  //   icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+  //     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+  //     <polyline points="9 22 9 12 15 12 15 22"></polyline>
+  //   </svg>`,
+  // },
 ];
 </script>
 
