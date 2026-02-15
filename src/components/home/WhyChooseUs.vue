@@ -235,13 +235,14 @@ const features = [
 
 <style scoped>
 .section {
-  overflow: hidden; /* CRÍTICO */
+  overflow: hidden;
+  padding: 4rem 0; /* Reducir si está muy alto */
 }
 
 .why-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 5rem;
+  gap: 4rem;
   align-items: center;
   max-width: 100%; /* IMPORTANTE */
 }
@@ -253,8 +254,8 @@ const features = [
 .features {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  margin-bottom: 2.5rem;
+  gap: 1.75rem;
+  margin-bottom: 2rem;
   max-width: 100%; /* IMPORTANTE */
 }
 
