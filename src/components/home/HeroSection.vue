@@ -296,7 +296,7 @@ onUnmounted(() => {
 }
 
 .hero-text {
-  max-width: 850px;
+  max-width: 925px;
   width: 100%;
 }
 
@@ -562,7 +562,7 @@ onUnmounted(() => {
 /* Responsive */
 @media (max-width: 1200px) {
   .hero {
-    max-height: 750px;
+    max-height: 870px;
   }
 }
 
@@ -570,7 +570,7 @@ onUnmounted(() => {
   .hero {
     height: absolute;
     min-height: 550px;
-    max-height: none;
+    max-height: 870px;
     margin-top: 60px;
     margin-top: 60px;
   }
