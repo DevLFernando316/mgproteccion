@@ -226,7 +226,6 @@ onUnmounted(() => {
   height: calc(100dvh);
   min-height: 500px;
   overflow: hidden; /* IMPORTANTE */
-  max-width: 100vw; /* IMPORTANTE */
   width: 100%;
 }
 
@@ -235,7 +234,6 @@ onUnmounted(() => {
   width: 100%;
   height: 100%;
   overflow: hidden; /* IMPORTANTE */
-  max-width: 100vw; /* IMPORTANTE */
 }
 
 .slide {
@@ -250,7 +248,6 @@ onUnmounted(() => {
   background-position: center;
   background-repeat: no-repeat;
   overflow: hidden; /* IMPORTANTE */
-  max-width: 100vw; /* IMPORTANTE */
 }
 
 /* Backgrounds para cada slide */
@@ -284,8 +281,10 @@ onUnmounted(() => {
   position: relative;
   z-index: 2;
   height: 100%;
-  max-width: 100vw; /* IMPORTANTE */
-  overflow-x: hidden; /* IMPORTANTE */
+  width: 100%;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  margin: 0 auto;
 }
 
 .hero-content {
@@ -293,13 +292,12 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   padding: 2rem 0;
-  max-width: 100vw; /* IMPORTANTE */
-  overflow-x: hidden; /* IMPORTANTE */
+  width: 100%;
 }
 
 .hero-text {
   max-width: 850px;
-  overflow-x: hidden; /* IMPORTANTE */
+  width: 100%;
 }
 
 .hero-text h1 {
@@ -574,14 +572,15 @@ onUnmounted(() => {
     min-height: 550px;
     max-height: none;
     margin-top: 60px;
-    overflow: hidden;
-    max-width: 100vw;
+    margin-top: 60px;
   }
 
   .hero-content {
     padding: 3rem 0;
-    width: 100%;
-    max-width: 100vw;
+  }
+
+  .hero-text {
+    max-width: 100%;
   }
 
   .hero-text h1 {
@@ -606,6 +605,7 @@ onUnmounted(() => {
   .stat span {
     font-size: 0.875rem;
   }
+
   .carousel-control {
     width: 42px;
     height: 42px;
@@ -627,19 +627,25 @@ onUnmounted(() => {
 @media (max-width: 640px) {
   .hero {
     min-height: 500px;
-    overflow: hidden;
-    max-width: 100vw;
   }
 
-  .hero-text h1,
-  .hero-description,
-  .hero-actions,
-  .hero-stats {
-    max-width: 100%;
+  .container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .hero-text h1 {
+    font-size: 1.75rem;
+    line-height: 1.2;
   }
 
   .hero-description {
     font-size: 0.9375rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 0.875rem;
   }
 
   .hero-stats {
@@ -649,6 +655,7 @@ onUnmounted(() => {
 
   .stat {
     justify-content: center;
+    width: 100%;
   }
 
   .carousel-control {
