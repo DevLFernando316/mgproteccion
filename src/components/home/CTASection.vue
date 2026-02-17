@@ -89,21 +89,25 @@ import Button from "../common/Button.vue";
   padding: 5rem 2rem;
   overflow: hidden;
   background: #6b7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cta-background {
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  left: 50%; /* Centrar horizontalmente */
+  transform: translateX(-50%); /* Centrar horizontalmente */
+  width: 100%;
+  max-width: 1920px; /* Ancho máximo de la imagen */
+  height: 100%;
   overflow: hidden;
 }
 
 .cta-bg-image {
   width: 100%;
   height: 100%;
-
   object-position: center;
   opacity: 0.9;
 }
