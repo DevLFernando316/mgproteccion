@@ -165,13 +165,48 @@
         />
       </svg>
     </a>
+
+    <!-- Scroll To Top - al lado del WhatsApp -->
+<Transition name="scroll-top">
+  <button
+    v-if="isVisible"
+    class="scroll-top-btn"
+    @click="scrollToTop"
+    aria-label="Volver al inicio"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+</Transition>
   </footer>
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed, ref, onMounted, onUnmounted } from "vue";
 
 const currentYear = computed(() => new Date().getFullYear());
+
+const isVisible = ref(false);
+
+const handleScroll = () => {
+  isVisible.value = window.scrollY > 300;
+};
+
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
+
+onMounted(() => window.addEventListener("scroll", handleScroll));
+onUnmounted(() => window.removeEventListener("scroll", handleScroll));
 </script>
 
 <style scoped>
@@ -427,6 +462,73 @@ const currentYear = computed(() => new Date().getFullYear());
   }
   .footer-credits {
     font-size: 0.8125rem;
+  }
+}
+
+/* Scroll To Top */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 100px; /* A la izquierda del WhatsApp */
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(13, 61, 62, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 998;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.scroll-top-btn:hover {
+  background: rgba(13, 61, 62, 1);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.scroll-top-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Transición */
+.scroll-top-enter-active,
+.scroll-top-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.scroll-top-enter-from,
+.scroll-top-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .scroll-top-btn {
+    width: 42px;
+    height: 42px;
+    bottom: 20px;
+    right: 85px;
+  }
+
+  .scroll-top-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .scroll-top-btn {
+    right: 82px;
+    width: 40px;
+    height: 40px;
   }
 }
 </style>

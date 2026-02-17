@@ -13,7 +13,7 @@
           <div class="container">
             <div class="hero-content">
               <div class="hero-text fade-in-up">
-                <h1 v-html="slides[currentSlide].title"></h1>
+                <h1>{{ slides[currentSlide].title }}</h1>
                 <p class="hero-description">
                   {{ slides[currentSlide].description }}
                 </p>
@@ -24,26 +24,6 @@
                   <Button variant="secondary" size="lg" to="/servicios">
                     Ver Servicios
                   </Button>
-                </div>
-
-                <!-- Stats compactos -->
-                <div class="hero-stats">
-                  <div
-                    v-for="(stat, index) in slides[currentSlide].stats"
-                    :key="index"
-                    class="stat"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                    <span>{{ stat }}</span>
-                  </div>
                 </div>
               </div>
             </div>
@@ -140,29 +120,24 @@ let autoplayInterval = null;
 
 const slides = [
   {
-    title:
-      'Proteja a su equipo y <span class="text-highlight">garantice el cumplimiento normativo</span>',
+    title: "Soluciones integrales en gestión de riesgos laborales",
     description:
-      "Asesoría especializada en seguridad laboral con tecnología de vanguardia y cumplimiento garantizado.",
-    stats: [
-      "Expertos certificados",
-      "Cumplimiento 100%",
-      "Resultados medibles",
-    ],
+      "Garantice la seguridad de su equipo, cumpla con la normatividad vigente y optimice sus operaciones con servicios especializados en SST.",
   },
   {
-    title:
-      '<span class="text-highlight">Reduzca incidentes hasta un 85%</span> con tecnología IA',
+    title: "Transforme la seguridad laboral de su organización",
     description:
-      "Transforme la seguridad de su empresa con simuladores, análisis predictivo y capacitación innovadora.",
-    stats: ["Tecnología IA avanzada", "Menos accidentes", "Formación práctica"],
+      "Integramos inteligencia artificial y análisis predictivo para anticipar riesgos, fortalecer controles y optimizar la gestión del SG-SST.",
   },
   {
-    title:
-      'Evite multas y sanciones <span class="text-highlight">¡Nosotros lo acompañamos!</span>',
+    title: "Optimice su seguridad eléctrica con cumplimiento normativo",
     description:
-      "Cumplimiento de RETIE 2024, Decreto 1072, ISO 45001 y toda la normativa vigente en SST.",
-    stats: ["Sin sanciones", "Auditorías expertas", "Asesoría permanente"],
+      "Diseñamos controles y medidas técnicas alineadas con RETIE 2024 (Res. 40117), Resolución 5018 de 2019 y estándares internacionales como NFPA 70E.",
+  },
+  {
+    title: "Gamificación estratégica para una formación de alto impacto",
+    description:
+      "Transformamos la capacitación tradicional en experiencias dinámicas que incrementan la retención del conocimiento y modifican conductas.",
   },
 ];
 
@@ -221,11 +196,13 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
+/* TU CSS COMPLETO SE MANTIENE EXACTAMENTE IGUAL */
 .hero {
   position: relative;
-  height: calc(100dvh);
+  height: calc(100dvh - 75px);
+  margin-top: 75px;
   min-height: 500px;
-  overflow: hidden; /* IMPORTANTE */
+  overflow: hidden;
   width: 100%;
 }
 
@@ -233,7 +210,7 @@ onUnmounted(() => {
   position: relative;
   width: 100%;
   height: 100%;
-  overflow: hidden; /* IMPORTANTE */
+  overflow: hidden;
 }
 
 .slide {
@@ -247,22 +224,28 @@ onUnmounted(() => {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  overflow: hidden; /* IMPORTANTE */
+  overflow: hidden;
 }
 
+/* Backgrounds para cada slide - ACTUALIZADO A 4 SLIDES */
 /* Backgrounds para cada slide */
 .slide-0 {
-  background-image: url("/images/carousel/background1.jpg");
+  background-image: url("/images/carousel/background1.WEBP");
 }
 
 .slide-1 {
-  background-image: url("/images/carousel/background2.jpg");
+  background-image: url("/images/carousel/background2.PNG");
 }
 
 .slide-2 {
   background-image: url("/images/carousel/background3.jpg");
 }
 
+.slide-3 {
+  background-image: url("/images/carousel/background4.JPG");
+}
+
+/* Overlay - Desktop: degradado de izquierda a derecha */
 .slide-overlay {
   position: absolute;
   top: 0;
@@ -270,11 +253,27 @@ onUnmounted(() => {
   width: 100%;
   height: 100%;
   background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.25) 0%,
-    rgba(0, 0, 0, 0.2) 100%
+    to right,
+    rgba(13, 61, 62, 0.97) 0%,
+    rgba(13, 61, 62, 0.92) 20%,
+    rgba(13, 61, 62, 0.75) 40%,
+    rgba(13, 61, 62, 0.3) 65%,
+    rgba(13, 61, 62, 0) 100%
   );
   z-index: 1;
+}
+
+/* Móvil: overlay oscuro uniforme como en la imagen */
+@media (max-width: 968px) {
+  .slide-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(13, 61, 62, 0.85) 0%,
+      rgba(13, 61, 62, 0.6) 30%,
+      rgba(13, 61, 62, 0.3) 60%,
+      rgba(0, 0, 0, 0.2) 100%
+    );
+  }
 }
 
 .container {
@@ -372,21 +371,6 @@ onUnmounted(() => {
   font-weight: 600;
   color: white;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-/* Overlay más oscuro para mejor contraste */
-.slide-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.45) 0%,
-    rgba(0, 0, 0, 0.35) 100%
-  );
-  z-index: 1;
 }
 
 /* Controles del carrusel */
@@ -509,10 +493,7 @@ onUnmounted(() => {
   right: 25px;
 }
 
-/* =====================================================
-   TRANSICIÓN SUAVE PROFESIONAL
-===================================================== */
-/* ENTER + LEAVE */
+/* TRANSICIÓN SUAVE PROFESIONAL */
 .slide-smooth-enter-active,
 .slide-smooth-leave-active,
 .slide-smooth-reverse-enter-active,
@@ -522,7 +503,6 @@ onUnmounted(() => {
     opacity 0.9s ease;
 }
 
-/* → NEXT (derecha a izquierda) */
 .slide-smooth-enter-from {
   transform: translateX(60px);
   opacity: 0;
@@ -533,7 +513,6 @@ onUnmounted(() => {
   opacity: 0;
 }
 
-/* ← PREV (izquierda a derecha) */
 .slide-smooth-reverse-enter-from {
   transform: translateX(-60px);
   opacity: 0;
@@ -571,8 +550,6 @@ onUnmounted(() => {
     height: absolute;
     min-height: 550px;
     max-height: 870px;
-    margin-top: 60px;
-    margin-top: 60px;
   }
 
   .hero-content {
@@ -677,7 +654,6 @@ onUnmounted(() => {
   }
 }
 
-/* Optimización de rendimiento */
 @media (prefers-reduced-motion: reduce) {
   .slide-smooth-enter-active,
   .slide-smooth-leave-active,

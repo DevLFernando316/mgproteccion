@@ -22,10 +22,11 @@
             v-for="(service, index) in services"
             :key="service.id"
             class="service-card-compact"
+            :id="`servicio-${service.id}`"
           >
-            <!-- <div class="service-number">
+            <div class="service-number">
               {{ String(index + 1).padStart(2, "0") }}
-            </div> -->
+            </div>
 
             <div class="service-main">
               <div class="service-header">
@@ -327,7 +328,7 @@ const services = [
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr; /* Cambiado de repeat(2, 1fr) */
   gap: 3rem;
 }
 

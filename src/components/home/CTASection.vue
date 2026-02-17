@@ -1,7 +1,7 @@
 <template>
   <section class="cta-section">
     <div class="cta-background">
-      <img src="/imagen_cta.png" alt="CTA Background" class="cta-bg-image" />
+      <img src="/imagen_cta.JPG" alt="CTA Background" class="cta-bg-image" />
     </div>
     <div class="container">
       <div class="cta-content">
@@ -88,7 +88,7 @@ import Button from "../common/Button.vue";
   position: relative;
   padding: 5rem 2rem;
   overflow: hidden;
-  background: #6b7280;
+  background: #1a1a1a;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -97,10 +97,10 @@ import Button from "../common/Button.vue";
 .cta-background {
   position: absolute;
   top: 0;
-  left: 50%; /* Centrar horizontalmente */
-  transform: translateX(-50%); /* Centrar horizontalmente */
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
-  max-width: 1920px; /* Ancho máximo de la imagen */
+  max-width: 1920px;
   height: 100%;
   overflow: hidden;
 }
@@ -108,8 +108,25 @@ import Button from "../common/Button.vue";
 .cta-bg-image {
   width: 100%;
   height: 100%;
+  object-fit: cover;
   object-position: center;
-  opacity: 0.9;
+  opacity: 1;
+  filter: brightness(1); /* Antes 0.35 → ahora más claro */
+}
+
+/* Overlay más suave */
+.cta-background::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(13, 61, 62, 0.45) 0%,
+    rgba(32, 77, 50, 0.3) 30%
+  );
 }
 
 .cta-content {
@@ -124,13 +141,18 @@ import Button from "../common/Button.vue";
   color: white;
   font-size: clamp(2rem, 4vw, 2.75rem);
   margin-bottom: 1.5rem;
+  /* Sombra de texto para mayor legibilidad */
+  text-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.8),
+    0 4px 20px rgba(0, 0, 0, 0.6);
 }
 
 .cta-text p {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
   font-size: 1.125rem;
   line-height: 1.7;
   margin-bottom: 2rem;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
 }
 
 .cta-features {
@@ -147,13 +169,21 @@ import Button from "../common/Button.vue";
   gap: 0.5rem;
   color: white;
   font-size: 0.9375rem;
-  font-weight: 500;
+  font-weight: 600;
+  /* Pastilla de fondo para destacar */
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .cta-feature svg {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   flex-shrink: 0;
+  color: #5dd4b4;
 }
 
 .cta-actions {
@@ -170,15 +200,17 @@ import Button from "../common/Button.vue";
   padding: 1rem 2.5rem;
   background: white;
   color: #25d366;
-  font-weight: 600;
+  font-weight: 700;
   border-radius: 10px;
   transition: var(--transition-base);
   font-size: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .whatsapp-btn:hover {
   transform: translateY(-3px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  background: #f0fdf4;
 }
 
 .whatsapp-btn svg {
@@ -193,8 +225,12 @@ import Button from "../common/Button.vue";
 
   .cta-features {
     flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
+    align-items: center;
+  }
+
+  .cta-feature {
+    width: 100%;
+    justify-content: center;
   }
 
   .cta-actions {
@@ -207,10 +243,8 @@ import Button from "../common/Button.vue";
     justify-content: center;
   }
 
-  .cta-background {
-    background-size: cover;
-    background-position: center;
-    opacity: 0.5; /* Reducir opacidad en móvil para mejor legibilidad */
+  .cta-bg-image {
+    filter: brightness(0.25); /* Más oscuro en móvil */
   }
 }
 </style>

@@ -40,137 +40,7 @@
           </div>
           <div class="content-visual">
             <div class="visual-box">
-              <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                <!-- Building/Office -->
-                <rect
-                  x="100"
-                  y="100"
-                  width="200"
-                  height="250"
-                  fill="currentColor"
-                  opacity="0.1"
-                  rx="8"
-                />
-                <rect
-                  x="100"
-                  y="100"
-                  width="200"
-                  height="250"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="3"
-                  rx="8"
-                />
-
-                <!-- Windows -->
-                <g opacity="0.7">
-                  <rect
-                    x="130"
-                    y="130"
-                    width="40"
-                    height="40"
-                    fill="currentColor"
-                    rx="4"
-                  />
-                  <rect
-                    x="180"
-                    y="130"
-                    width="40"
-                    height="40"
-                    fill="currentColor"
-                    rx="4"
-                  />
-                  <rect
-                    x="230"
-                    y="130"
-                    width="40"
-                    height="40"
-                    fill="currentColor"
-                    rx="4"
-                  />
-
-                  <rect
-                    x="130"
-                    y="185"
-                    width="40"
-                    height="40"
-                    fill="currentColor"
-                    rx="4"
-                  />
-                  <rect
-                    x="180"
-                    y="185"
-                    width="40"
-                    height="40"
-                    fill="currentColor"
-                    rx="4"
-                  />
-                  <rect
-                    x="230"
-                    y="185"
-                    width="40"
-                    height="40"
-                    fill="currentColor"
-                    rx="4"
-                  />
-
-                  <rect
-                    x="130"
-                    y="240"
-                    width="40"
-                    height="40"
-                    fill="currentColor"
-                    rx="4"
-                  />
-                  <rect
-                    x="180"
-                    y="240"
-                    width="40"
-                    height="40"
-                    fill="currentColor"
-                    rx="4"
-                  />
-                  <rect
-                    x="230"
-                    y="240"
-                    width="40"
-                    height="40"
-                    fill="currentColor"
-                    rx="4"
-                  />
-                </g>
-
-                <!-- Door -->
-                <rect
-                  x="170"
-                  y="300"
-                  width="60"
-                  height="50"
-                  fill="currentColor"
-                  opacity="0.3"
-                  rx="4"
-                />
-
-                <!-- Shield overlay -->
-                <path
-                  d="M 200 60 L 200 100 Q 200 140, 230 160 Q 200 140, 170 160 Q 200 140, 200 100 Z"
-                  fill="currentColor"
-                  opacity="0.2"
-                />
-                <path
-                  d="M 200 60 L 200 100 Q 200 140, 230 160 Q 200 140, 170 160 Q 200 140, 200 100 Z"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="3"
-                />
-                <polyline
-                  points="190 95 200 105 220 85"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                />
-              </svg>
+              <img src="/nosotros.webp" alt="Nosotros MG Protección Laboral" />
             </div>
           </div>
         </div>
@@ -263,13 +133,24 @@
                 Ingeniero Mecatrónico | Director General
               </p>
               <p class="member-description">
-                Profesional con sólida formación en ingeniería mecatrónica y
-                amplia experiencia en la implementación de sistemas de gestión
-                de seguridad industrial. Especialista en control de energías
-                peligrosas, trabajos de alto riesgo y tecnologías aplicadas a la
-                SST. Su enfoque combina conocimiento técnico avanzado con una
-                visión estratégica orientada a resultados medibles y
-                sostenibles.
+                Ingeniero Mecatrónico especialista en Salud Ocupacional y
+                Riesgos Laborales, formado con principios éticos y valores, con
+                sólida experiencia en ingeniería aplicada a la seguridad
+                industrial. Experto en la gestión del riesgo eléctrico y riesgo
+                mecánico, así como en la administración de Sistemas de Gestión
+                de Seguridad y Salud en el Trabajo (SG-SST) en entornos
+                industriales, orientado a la identificación, evaluación y
+                control de peligros asociados a maquinaria, equipos energizados
+                y trabajos de alto riesgo.
+              </p>
+              <p class="member-description">
+                Auditor Técnico en Gestión del Riesgo Eléctrico conforme al
+                RETIE (Resolución 40117 de 2024), con Matrícula Profesional
+                CONTE y formación en seguridad eléctrica bajo estándares NFPA
+                70E, orientado al cumplimiento normativo y la prevención de
+                incidentes. Se caracteriza por su responsabilidad, ética
+                profesional, trabajo en equipo y compromiso con la excelencia en
+                cada servicio que lidera o acompaña.
               </p>
               <div class="member-contact">
                 <a href="tel:+573168722357" class="contact-btn">
@@ -452,16 +333,19 @@ const values = [
 
 .visual-box {
   background: white;
-  padding: 2rem;
+  padding: 0; /* Quitar padding para que la imagen ocupe todo */
   border-radius: 16px;
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--color-border);
+  overflow: hidden; /* Para que la imagen respete el border-radius */
 }
 
-.visual-box svg {
+.visual-box img {
   width: 100%;
-  height: auto;
-  color: var(--color-primary);
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 16px;
 }
 
 /* Mission Vision */

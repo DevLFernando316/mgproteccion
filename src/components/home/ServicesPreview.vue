@@ -5,25 +5,78 @@
         Soluciones especializadas para la gestión integral de riesgos laborales
       </SectionTitle>
 
-      <div class="services-grid">
-        <div v-for="service in services" :key="service.id" class="service-item">
-          <!-- Imagen superior -->
-          <div class="service-img">
-            <img :src="service.image" :alt="service.title" />
-          </div>
+      <div class="carousel-wrapper">
+        <!-- Flecha izquierda -->
+        <button class="carousel-btn prev" @click="prev" aria-label="Anterior">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
 
-          <!-- Contenido -->
-          <div class="service-content">
-            <div class="service-content-inner">
-              <div class="service-icon" v-html="service.icon"></div>
-              <h4>{{ service.title }}</h4>
-              <p>{{ service.description }}</p>
-              <router-link to="/servicios" class="service-btn">
-                Conocer más
-              </router-link>
+        <!-- Track del carrusel -->
+        <div class="carousel-track-container" ref="trackContainer">
+          <div
+            class="carousel-track"
+            :style="{ transform: `translateX(-${trackOffset}px)` }"
+          >
+            <div
+              v-for="service in services"
+              :key="service.id"
+              class="service-item"
+              :style="{ width: cardWidth + 'px', flexBasis: cardWidth + 'px' }"
+            >
+              <!-- Imagen superior -->
+              <div class="service-img">
+                <img :src="service.image" :alt="service.title" />
+              </div>
+
+              <!-- Contenido -->
+              <div class="service-content">
+                <div class="service-content-inner">
+                  <div class="service-icon" v-html="service.icon"></div>
+                  <h4>{{ service.title }}</h4>
+                  <p>{{ service.description }}</p>
+                  <router-link
+                    :to="`/servicios#servicio-${service.id}`"
+                    class="service-btn"
+                  >
+                    Conocer más
+                  </router-link>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
+        <!-- Flecha derecha -->
+        <button class="carousel-btn next" @click="next" aria-label="Siguiente">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Dots indicadores -->
+      <div class="carousel-dots">
+        <button
+          v-for="(_, index) in dotCount"
+          :key="index"
+          :class="{ active: index === activeDot }"
+          @click="goTo(index)"
+          :aria-label="`Ir a grupo ${index + 1}`"
+        ></button>
       </div>
 
       <div class="services-cta">
@@ -36,16 +89,22 @@
 </template>
 
 <script setup>
+import { ref, computed, onMounted, onUnmounted, nextTick } from "vue";
 import SectionTitle from "../common/SectionTitle.vue";
 import Button from "../common/Button.vue";
+
+const currentIndex = ref(0);
+const itemsPerView = ref(3);
+const cardWidth = ref(0);
+const trackContainer = ref(null);
 
 const services = [
   {
     id: 1,
-    title: "Fortalezca la cultura organizacional en seguridad ",
+    title: "Sistemas de Gestión de Seguridad y Salud en el Trabajo",
     description:
-      "Brindamos apoyo en la construcción de una cultura preventiva que involucra a todos los niveles de la organización, promoviendo un entorno laboral seguro y responsable.",
-    image: "/images/servicios/1Cultura_Organizacional.JPG",
+      "Diseño e implementación del SG-SST conforme al Decreto 1072 de 2015 y Resolución 0312 de 2019.",
+    image: "/images/servicios2/SGSST.jpeg",
     icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
       <polyline points="14 2 14 8 20 8"/>
@@ -55,34 +114,34 @@ const services = [
   },
   {
     id: 2,
-    title: "Transforme la seguridad laboral de su organización",
+    title: "Gestión de Riesgo Mecánico",
     description:
-      "Integramos inteligencia artificial y análisis predictivo para anticipar riesgos, fortalecer controles y optimizar la gestión del SG-SST.",
-    image: "/images/servicios/2IA_análisis_predictivo.PNG",
+      "Identificación, evaluación y valoración de peligros mecánicos conforme a estándares nacionales e internacionales.",
+    image: "/images/servicios2/R_Mecanico.JPG",
     icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="12" cy="12" r="3"/>
-      <path d="M12 1v6m0 6v6"/>
-      <path d="m4.93 4.93 4.24 4.24m5.66 5.66 4.24 4.24"/>
-      <path d="M1 12h6m6 0h6"/>
-      <path d="m4.93 19.07 4.24-4.24m5.66-5.66 4.24-4.24"/>
+      <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+      <path d="M4.93 4.93a10 10 0 0 0 0 14.14"/>
+      <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+      <path d="M8.46 8.46a5 5 0 0 0 0 7.07"/>
     </svg>`,
   },
   {
     id: 3,
-    title: "Soluciones integrales en gestión de riesgos laborales",
+    title: "Gestión de Riesgo Eléctrico",
     description:
-      "Garantice la seguridad de su equipo, cumpla con la normatividad vigente y optimice sus operaciones con servicios especializados en SST.",
-    image: "/images/servicios/3SGSST.WEBP",
+      "Cumplimiento de la Resolución 40117 de 2024 e implementación de prácticas seguras en instalaciones eléctricas.",
+    image: "/images/servicios2/R_electrico.PNG",
     icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/>
     </svg>`,
   },
   {
     id: 4,
-    title: "Optimice su seguridad eléctrica con cumplimiento normativo",
+    title: "Gestión de Tareas de Alto Riesgo (TAR)",
     description:
-      "Diseñamos controles y medidas técnicas alineadas con RETIE 2024 (Res. 40117), Resolución 5018 de 2019 y estándares internacionales como NFPA 70E.",
-    image: "/images/servicios/4Seguridad_eléctrica .PNG",
+      "Implementación de estrategias preventivas y de control para la administración segura de Tareas de Alto Riesgo.",
+    image: "/images/servicios2/Tareas_Alto_Riesgo.PNG",
     icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
       <path d="M12 9v4"/>
@@ -91,10 +150,10 @@ const services = [
   },
   {
     id: 5,
-    title: "Formación práctica y segura en riesgos críticos",
+    title: "Control de Energías Peligrosas",
     description:
-      "Capacitamos en riesgos críticos mediante simuladores portátiles que recrean entornos mecánicos y eléctricos sin exposición real, consolidando un entorno laboral seguro.",
-    image: "/images/servicios/5Riesgo_crítico.PNG",
+      "Implementación de procedimientos Lockout/Tagout según OSHA 29 CFR 1910.147.",
+    image: "/images/servicios2/Energiaspeligrosas.PNG",
     icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
       <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
@@ -102,10 +161,21 @@ const services = [
   },
   {
     id: 6,
-    title: "Gamificación estratégica para una formación de alto impacto",
+    title: "Gestión en Trabajo con Calderas",
     description:
-      "Transformamos la capacitación tradicional en experiencias dinámicas que incrementan la retención del conocimiento y modifican conductas.",
-    image: "/images/servicios/6Gamificación.JPG",
+      "Cumplimiento de la Resolución 1857 de 2024 para operación segura de calderas industriales.",
+    image: "/images/servicios2/Calderas1.PNG",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+      <line x1="4" y1="22" x2="4" y2="15"/>
+    </svg>`,
+  },
+  {
+    id: 7,
+    title: "Gamificación para Gestión de Riesgos Laborales",
+    description:
+      "Metodología basada en experiencias dinámicas que incrementan la retención del conocimiento y modifican conductas.",
+    image: "/images/servicios2/Gamificación.PNG",
     icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M6 5H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
       <rect width="12" height="8" x="6" y="1" rx="2"/>
@@ -116,24 +186,148 @@ const services = [
     </svg>`,
   },
 ];
+
+// Máximo índice de desplazamiento (carta a carta)
+const maxIndex = computed(() =>
+  Math.max(0, services.length - itemsPerView.value),
+);
+
+// Dots: uno por grupo
+const dotCount = computed(() =>
+  Math.ceil(services.length / itemsPerView.value),
+);
+
+// Dot activo según posición actual
+const activeDot = computed(() =>
+  Math.floor(currentIndex.value / itemsPerView.value),
+);
+
+// Cuánto desplazar el track
+const trackOffset = computed(() => {
+  const gap = 32; // 2rem = 32px
+  return currentIndex.value * (cardWidth.value + gap);
+});
+
+const updateLayout = () => {
+  const width = window.innerWidth;
+  if (width < 640) {
+    itemsPerView.value = 1;
+  } else if (width < 968) {
+    itemsPerView.value = 2;
+  } else {
+    itemsPerView.value = 3;
+  }
+
+  nextTick(() => {
+    const container = document.querySelector(".carousel-track-container");
+    if (container) {
+      const gap = 32;
+      cardWidth.value =
+        (container.offsetWidth - gap * (itemsPerView.value - 1)) /
+        itemsPerView.value;
+    }
+    // Ajustar índice si quedó fuera de rango tras resize
+    if (currentIndex.value > maxIndex.value) {
+      currentIndex.value = Math.max(0, maxIndex.value);
+    }
+  });
+};
+
+const next = () => {
+  if (currentIndex.value < maxIndex.value) {
+    currentIndex.value++;
+  } else {
+    currentIndex.value = 0;
+  }
+};
+
+const prev = () => {
+  if (currentIndex.value > 0) {
+    currentIndex.value--;
+  } else {
+    currentIndex.value = maxIndex.value;
+  }
+};
+
+// Al hacer click en dot, ir al inicio de ese grupo
+const goTo = (index) => {
+  currentIndex.value = Math.min(index * itemsPerView.value, maxIndex.value);
+};
+
+onMounted(() => {
+  updateLayout();
+  window.addEventListener("resize", updateLayout);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("resize", updateLayout);
+});
 </script>
 
 <style scoped>
 .section {
   padding: 5rem 0;
   background: var(--color-bg-light);
+  overflow: hidden;
 }
 
-/* Grid de servicios - Flexible */
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+/* Wrapper del carrusel */
+.carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Flechas */
+.carousel-btn {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid var(--color-border, #e5e7eb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  color: var(--color-text-dark, #1a1a1a);
+}
+
+.carousel-btn:hover {
+  background: #0f3d3e;
+  border-color: #0f3d3e;
+  color: white;
+  transform: scale(1.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Track container - oculta lo que se sale */
+.carousel-track-container {
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Track - contiene todas las tarjetas en fila */
+.carousel-track {
+  display: flex;
   gap: 2rem;
-  margin-bottom: 3rem;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Tarjeta de servicio */
 .service-item {
+  flex-shrink: 0;
+  min-width: 0;
   background: white;
   border-radius: 12px;
   overflow: hidden;
@@ -141,7 +335,6 @@ const services = [
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
-  height: 100%;
 }
 
 .service-item:hover {
@@ -149,13 +342,11 @@ const services = [
   transform: translateY(-5px);
 }
 
-/* Imagen con efecto */
+/* Imagen */
 .service-img {
   position: relative;
   overflow: hidden;
   height: 180px;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
   flex-shrink: 0;
 }
 
@@ -170,7 +361,6 @@ const services = [
   transform: scale(1.2);
 }
 
-/* Overlay azul que crece al hover */
 .service-img::after {
   content: "";
   width: 0;
@@ -178,8 +368,6 @@ const services = [
   position: absolute;
   top: 0;
   right: 0;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
   background: rgba(32, 77, 50, 0.4);
   transition: all 0.5s ease;
 }
@@ -200,7 +388,6 @@ const services = [
   flex-direction: column;
 }
 
-/* Overlay oscuro que crece desde abajo */
 .service-content::after {
   content: "";
   width: 0;
@@ -220,7 +407,6 @@ const services = [
   height: 100%;
 }
 
-/* Contenido interno */
 .service-content-inner {
   padding: 1.5rem;
   text-align: center;
@@ -279,11 +465,6 @@ const services = [
   flex: 1;
 }
 
-/* Cambio de color al hover */
-.service-item:hover .service-content-inner {
-  color: white;
-}
-
 .service-item:hover .service-content-inner h4 {
   color: white;
 }
@@ -326,31 +507,59 @@ const services = [
   border-color: #5dd4b4;
 }
 
-/* CTA final */
+/* Dots indicadores */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.625rem;
+  margin-bottom: 2.5rem;
+}
+
+.carousel-dots button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-border, #e5e7eb);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.carousel-dots button.active {
+  background: #0f3d3e;
+  width: 28px;
+  border-radius: 5px;
+}
+
+/* CTA */
 .services-cta {
   text-align: center;
   padding-top: 1rem;
 }
 
 /* Responsive */
-@media (max-width: 1400px) {
-  .services-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
 @media (max-width: 968px) {
-  .services-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-
   .service-img {
     height: 160px;
   }
 
   .service-content-inner {
     padding: 1.25rem;
+  }
+
+  .carousel-btn {
+    width: 42px;
+    height: 42px;
+  }
+
+  .carousel-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .carousel-wrapper {
+    gap: 0.75rem;
   }
 }
 
@@ -359,13 +568,26 @@ const services = [
     padding: 3rem 0;
   }
 
-  .services-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
   .service-img {
     height: 200px;
+  }
+
+  .carousel-wrapper {
+    gap: 0.5rem;
+  }
+
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .carousel-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .carousel-track {
+    gap: 1rem;
   }
 
   .service-content-inner h4 {
