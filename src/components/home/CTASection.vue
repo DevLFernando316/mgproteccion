@@ -243,8 +243,8 @@ import Button from "../common/Button.vue";
     justify-content: center;
   }
 
-  .cta-bg-image {
-    filter: brightness(0.25); /* Más oscuro en móvil */
-  }
+  /* .cta-bg-image {
+    filter: brightness(0.25); 
+  } */ /* Más oscuro en móvil */
 }
 </style>

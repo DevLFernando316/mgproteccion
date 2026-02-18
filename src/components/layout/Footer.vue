@@ -232,8 +232,8 @@ onUnmounted(() => window.removeEventListener("scroll", handleScroll));
 }
 
 .footer-logo-image {
-  height: 70px;
-  width: 105px;
+  height: 50px;
+  width: 140px;
   filter: brightness(0) invert(1);
   opacity: 0.95;
   transition: all 0.3s ease;
@@ -447,8 +447,8 @@ onUnmounted(() => window.removeEventListener("scroll", handleScroll));
   }
 
   .footer-logo-image {
-    height: 60px;
-    width: 90px;
+    height: 50px;
+    width: 140px;
   }
   .footer-credits {
     font-size: 0.8125rem;
@@ -458,7 +458,7 @@ onUnmounted(() => window.removeEventListener("scroll", handleScroll));
 @media (max-width: 480px) {
   .footer-logo-image {
     height: 50px;
-    width: 80px;
+    width: 140px;
   }
   .footer-credits {
     font-size: 0.8125rem;

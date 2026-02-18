@@ -175,7 +175,7 @@ const services = [
     title: "Gamificación para Gestión de Riesgos Laborales",
     description:
       "Metodología basada en experiencias dinámicas que incrementan la retención del conocimiento y modifican conductas.",
-    image: "/images/servicios2/Gamificación.PNG",
+    image: "/images/servicios2/Gamificacion.PNG",
     icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M6 5H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
       <rect width="12" height="8" x="6" y="1" rx="2"/>

@@ -37,27 +37,30 @@
               <p class="service-intro">{{ service.intro }}</p>
 
               <div class="service-features-section">
-                <h4>¿Qué incluye este servicio?</h4>
+                <div class="features-layout">
+                  <!-- Columna izquierda: título + items -->
+                  <div class="features-content">
+                    <h4>¿Qué incluye este servicio?</h4>
+                    <ul class="service-features">
+                      <li v-for="(feature, idx) in service.features" :key="idx">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                        >
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        {{ feature }}
+                      </li>
+                    </ul>
+                  </div>
 
-                <!-- Lista de features primero -->
-                <ul class="service-features">
-                  <li v-for="(feature, idx) in service.features" :key="idx">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                    {{ feature }}
-                  </li>
-                </ul>
-
-                <!-- Imagen al final de los features -->
-                <div class="service-image-box">
-                  <img :src="service.image" :alt="service.title" />
+                  <!-- Columna derecha: imagen -->
+                  <div class="service-image-box">
+                    <img :src="service.image" :alt="service.title" />
+                  </div>
                 </div>
               </div>
 
@@ -259,7 +262,7 @@ const services = [
     title: "Gamificación para Gestión de Riesgos Laborales",
     intro:
       "Metodología basada en experiencias dinámicas que incrementan la retención del conocimiento.",
-    image: "/images/servicios2/Gamificación.PNG",
+    image: "/images/servicios2/Gamificacion.PNG",
     icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="17" cy="17" r="3"/>
       <circle cx="7" cy="7" r="3"/>
@@ -409,29 +412,41 @@ const services = [
 }
 
 /* Features section */
-.service-features-section h4 {
+.service-features-section {
+  margin-bottom: 2rem;
+}
+
+.features-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 2rem;
+  align-items: start;
+}
+
+.features-content h4 {
   font-size: 1.0625rem;
   color: var(--color-text-dark);
   margin-bottom: 1rem;
   font-weight: 700;
 }
 
-/* Imagen debajo del título */
+/* Imagen al lado */
 .service-image-box {
   width: 100%;
+  height: 100%;
+  min-height: 240px;
   max-height: 250px;
-  min-height: 180px;
   border-radius: 12px;
   overflow: hidden;
   border: 2px solid var(--color-border);
   background: #f5f5f5;
-  margin-bottom: 1.25rem;
+  position: sticky;
+  top: 100px;
 }
 
 .service-image-box img {
   width: 100%;
-  height: auto;
-  max-height: 250px;
+  height: 100%;
   object-fit: cover;
   object-position: center;
   transition: transform 0.5s ease;
@@ -447,7 +462,6 @@ const services = [
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  margin-bottom: 2rem;
 }
 
 .service-features li {
@@ -510,8 +524,12 @@ const services = [
   .services-grid {
     gap: 2.5rem;
   }
+  .features-layout {
+    grid-template-columns: 1fr 280px;
+  }
+
   .service-image-box {
-    height: 180px;
+    min-height: 220px;
   }
 }
 
@@ -533,8 +551,19 @@ const services = [
     padding: 2rem;
   }
 
+  .features-with-image {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .features-layout {
+    grid-template-columns: 1fr;
+  }
+
   .service-image-box {
-    height: 200px;
+    position: static;
+    max-height: 280px;
+    max-width: 400px;
   }
 }
 
@@ -561,7 +590,8 @@ const services = [
   }
 
   .service-image-box {
-    height: 180px;
+    min-height: 180px;
+    max-height: 220px;
   }
 
   .benefits-grid {

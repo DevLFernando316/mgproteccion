@@ -149,8 +149,8 @@ onUnmounted(() => {
 }
 
 .logo-image {
-  height: 70px;
-  width: 105px;
+  height: 50px;
+  width: 140px;
   filter: brightness(0) invert(1);
   transition: all 0.3s ease;
 }
@@ -379,15 +379,15 @@ onUnmounted(() => {
 
 @media (max-width: 968px) {
   .logo-image {
-    height: 60px;
-    width: 90px;
+    height: 50px;
+    width: 140px;
   }
 }
 
 @media (max-width: 480px) {
   .logo-image {
     height: 50px;
-    width: 80px;
+    width: 140px;
   }
 }
 </style>

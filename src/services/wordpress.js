@@ -1,137 +1,121 @@
-// src/services/wordpress.js - Versión de prueba
-
-const MOCK_POSTS = [
-  {
-    id: 1,
-    title: "Guía Completa de Gestión de Riesgos Eléctricos",
-    excerpt:
-      "Todo lo que necesitas saber sobre el cumplimiento de RETIE 2024 y las mejores prácticas en seguridad eléctrica.",
-    content: "<p>Contenido completo del artículo...</p>",
-    slug: "guia-gestion-riesgos-electricos",
-    date: "2024-02-15T10:00:00",
-    author: "MG Protección",
-    featuredImage: "/images/blog-default.png",
-    categories: [
-      { id: 1, name: "Seguridad Eléctrica", slug: "seguridad-electrica" },
-    ],
-  },
-  {
-    id: 2,
-    title: "5 Pasos para Implementar un SG-SST Efectivo",
-    excerpt:
-      "Aprende cómo diseñar e implementar un Sistema de Gestión de Seguridad y Salud en el Trabajo según el Decreto 1072.",
-    content: "<p>Contenido completo del artículo...</p>",
-    slug: "5-pasos-sgsst",
-    date: "2024-02-10T10:00:00",
-    author: "MG Protección",
-    featuredImage: "/images/blog-default.png",
-    categories: [{ id: 2, name: "SG-SST", slug: "sg-sst" }],
-  },
-  {
-    id: 3,
-    title: "Control de Energías Peligrosas: Lockout/Tagout",
-    excerpt:
-      "Procedimientos esenciales para el control de energías peligrosas según OSHA.",
-    content: "<p>Contenido completo del artículo...</p>",
-    slug: "control-energias-peligrosas",
-    date: "2024-02-05T10:00:00",
-    author: "MG Protección",
-    featuredImage: "/images/blog-default.png",
-    categories: [
-      { id: 3, name: "Seguridad Industrial", slug: "seguridad-industrial" },
-    ],
-  },
-  {
-    id: 3,
-    title: "Control de Energías Peligrosas: Lockout/Tagout",
-    excerpt:
-      "Procedimientos esenciales para el control de energías peligrosas según OSHA.",
-    content: "<p>Contenido completo del artículo...</p>",
-    slug: "control-energias-peligrosas",
-    date: "2024-02-05T10:00:00",
-    author: "MG Protección",
-    featuredImage: "/images/blog-default.png",
-    categories: [
-      { id: 3, name: "Seguridad Industrial", slug: "seguridad-industrial" },
-    ],
-  },
-  {
-    id: 3,
-    title: "Control de Energías Peligrosas: Lockout/Tagout",
-    excerpt:
-      "Procedimientos esenciales para el control de energías peligrosas según OSHA.",
-    content: "<p>Contenido completo del artículo...</p>",
-    slug: "control-energias-peligrosas",
-    date: "2024-02-05T10:00:00",
-    author: "MG Protección",
-    featuredImage: "/images/blog-default.png",
-    categories: [
-      { id: 3, name: "Seguridad Industrial", slug: "seguridad-industrial" },
-    ],
-  },
-  {
-    id: 3,
-    title: "Control de Energías Peligrosas: Lockout/Tagout",
-    excerpt:
-      "Procedimientos esenciales para el control de energías peligrosas según OSHA.",
-    content: "<p>Contenido completo del artículo...</p>",
-    slug: "control-energias-peligrosas",
-    date: "2024-02-05T10:00:00",
-    author: "MG Protección",
-    featuredImage: "/images/blog-default.png",
-    categories: [
-      { id: 3, name: "Seguridad Industrial", slug: "seguridad-industrial" },
-    ],
-  },
-  {
-    id: 3,
-    title: "Control de Energías Peligrosas: Lockout/Tagout",
-    excerpt:
-      "Procedimientos esenciales para el control de energías peligrosas según OSHA.",
-    content: "<p>Contenido completo del artículo...</p>",
-    slug: "control-energias-peligrosas",
-    date: "2024-02-05T10:00:00",
-    author: "MG Protección",
-    featuredImage: "/images/blog-default.png",
-    categories: [
-      { id: 3, name: "Seguridad Industrial", slug: "seguridad-industrial" },
-    ],
-  },
-];
+const WORDPRESS_API_URL = "https://blog.mgproteccionlaboral.com/wp-json/wp/v2";
 
 export const wordpressService = {
   async getPosts(params = {}) {
-    // Simular delay de red
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    const { page = 1, per_page = 9, categories = "", search = "" } = params;
 
-    return {
-      posts: MOCK_POSTS,
-      totalPages: 1,
-      totalPosts: MOCK_POSTS.length,
-    };
+    const queryParams = new URLSearchParams({
+      page: page.toString(),
+      per_page: per_page.toString(),
+      _embed: "true",
+      ...(categories && { categories }),
+      ...(search && { search }),
+    });
+
+    try {
+      const response = await fetch(`${WORDPRESS_API_URL}/posts?${queryParams}`);
+
+      if (!response.ok) {
+        throw new Error("Error fetching posts");
+      }
+
+      const posts = await response.json();
+      const totalPages = parseInt(
+        response.headers.get("X-WP-TotalPages") || "1",
+      );
+      const totalPosts = parseInt(response.headers.get("X-WP-Total") || "0");
+
+      return {
+        posts: posts.map((post) => ({
+          id: post.id,
+          title: post.title.rendered,
+          excerpt: post.excerpt.rendered,
+          content: post.content.rendered,
+          slug: post.slug,
+          date: post.date,
+          author: post._embedded?.author?.[0]?.name || "MG Protección",
+          featuredImage:
+            post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
+            "/images/blog-default.png",
+          categories:
+            post._embedded?.["wp:term"]?.[0]?.map((cat) => ({
+              id: cat.id,
+              name: cat.name,
+              slug: cat.slug,
+            })) || [],
+        })),
+        totalPages,
+        totalPosts,
+      };
+    } catch (error) {
+      console.error("Error fetching WordPress posts:", error);
+      return { posts: [], totalPages: 0, totalPosts: 0 };
+    }
   },
 
   async getPostBySlug(slug) {
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    return MOCK_POSTS.find((post) => post.slug === slug) || null;
+    try {
+      const response = await fetch(
+        `${WORDPRESS_API_URL}/posts?slug=${slug}&_embed=true`,
+      );
+
+      if (!response.ok) {
+        throw new Error("Error fetching post");
+      }
+
+      const posts = await response.json();
+
+      if (posts.length === 0) {
+        return null;
+      }
+
+      const post = posts[0];
+
+      return {
+        id: post.id,
+        title: post.title.rendered,
+        content: post.content.rendered,
+        excerpt: post.excerpt.rendered,
+        slug: post.slug,
+        date: post.date,
+        author: post._embedded?.author?.[0]?.name || "MG Protección",
+        featuredImage:
+          post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
+          "/images/blog-default.png",
+        categories:
+          post._embedded?.["wp:term"]?.[0]?.map((cat) => ({
+            id: cat.id,
+            name: cat.name,
+            slug: cat.slug,
+          })) || [],
+      };
+    } catch (error) {
+      console.error("Error fetching post by slug:", error);
+      return null;
+    }
   },
 
   async getCategories() {
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    return [
-      {
-        id: 1,
-        name: "Seguridad Eléctrica",
-        slug: "seguridad-electrica",
-        count: 5,
-      },
-      { id: 2, name: "SG-SST", slug: "sg-sst", count: 8 },
-      {
-        id: 3,
-        name: "Seguridad Industrial",
-        slug: "seguridad-industrial",
-        count: 6,
-      },
-    ];
+    try {
+      const response = await fetch(
+        `${WORDPRESS_API_URL}/categories?per_page=100`,
+      );
+
+      if (!response.ok) {
+        throw new Error("Error fetching categories");
+      }
+
+      const categories = await response.json();
+
+      return categories.map((cat) => ({
+        id: cat.id,
+        name: cat.name,
+        slug: cat.slug,
+        count: cat.count,
+      }));
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+      return [];
+    }
   },
 };
